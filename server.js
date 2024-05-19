@@ -29,6 +29,55 @@ function groupItemsWithQuantity(items) {
 
 
 
+const readCart = () => JSON.parse(fs.readFileSync('cart.json', 'utf8'));
+const writeCart = (cart) => fs.writeFileSync('cart.json', JSON.stringify(cart, null, 2));
+
+
+app.post('/update-cart-item', (req, res) => {
+    const { item, brand, price, action } = req.body;
+
+    let cart = readCart();
+
+    // Find the item in the cart
+    const itemIndex = cart.findIndex(cartItem =>
+        cartItem.item === item &&
+        cartItem.brand === brand &&
+        cartItem.price === price
+    );
+
+    if (itemIndex === -1) {
+        return res.status(404).json({ error: 'Item not found in cart' });
+    }
+
+    // Update the quantity
+    if (action === 'increase') {
+        cart[itemIndex].quantity += 1;
+    } else if (action === 'decrease') {
+        cart[itemIndex].quantity -= 1;
+        if (cart[itemIndex].quantity <= 0) {
+            cart.splice(itemIndex, 1);
+        }
+    }
+
+    writeCart(cart);
+    res.json({ message: 'Cart updated successfully' });
+});
+
+// API endpoint to fetch cart items
+app.get('/cart-items', (req, res) => {
+    let cart = readCart();
+    res.json(cart);
+});
+
+
+
+
+
+
+
+
+
+
 
 
 app.get('/cart', (req, res) => {
@@ -69,22 +118,24 @@ app.get('/list-items', (req, res) => {
 app.post('/add-to-cart', (req, res) => {
     const newItem = req.body;
 
-    fs.readFile('cart.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).json({ error: 'Error reading cart file' });
-        }
+    let cart = readCart();
 
-        let cart = JSON.parse(data);
+    // Check if item already exists
+    const existingItem = cart.find(cartItem =>
+        cartItem.item === newItem.item &&
+        cartItem.brand === newItem.brand &&
+        cartItem.price === newItem.price
+    );
+
+    if (existingItem) {
+        existingItem.quantity += 1; // Only update the quantity
+    } else {
+        newItem.quantity = 1;
         cart.push(newItem);
+    }
 
-        fs.writeFile('cart.json', JSON.stringify(cart, null, 2), (err) => {
-            if (err) {
-                return res.status(500).json({ error: 'Error writing to cart file' });
-            }
-
-            res.json({ message: 'Item added to cart successfully' });
-        });
-    });
+    writeCart(cart);
+    res.json({ message: 'Item added to cart successfully' });
 });
 
 
