@@ -1,6 +1,6 @@
 const volleyball = {
-    item: "volleyball",
-    brand: "molten",
+    item: "Molten FIVB Volleyball",
+    brand: "Molten",
     price: 70
 }
 
