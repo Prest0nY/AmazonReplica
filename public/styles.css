@@ -1,0 +1,8 @@
+.evenspace {
+    justify-content: space-around;
+    display: flex;
+}
+
+.textcenter {
+    text-align: center;
+}
