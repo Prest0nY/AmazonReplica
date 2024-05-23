@@ -5,7 +5,7 @@ const volleyball = {
 }
 
 const legoCar = {
-    item: "Lego Technic Camaro",
+    item: "Lego Technic Batmobile",
     brand: "LEGO",
     price: 120
 }
