@@ -72,6 +72,46 @@ app.get('/cart-items', (req, res) => {
 
 
 
+const readList = () => JSON.parse(fs.readFileSync('list.json', 'utf8'));
+const writeList = (list) => fs.writeFileSync('list.json', JSON.stringify(list, null, 2));
+
+
+app.post('/update-list-item', (req, res) => {
+    const { item, brand, price, action } = req.body;
+
+    let list = readList();
+
+    // Find the item in the cart
+    const itemIndex = list.findIndex(listItem =>
+        listItem.item === item &&
+        listItem.brand === brand &&
+        listItem.price === price
+    );
+
+    if (itemIndex === -1) {
+        return res.status(404).json({ error: 'Item not found in list' });
+    }
+
+    // Update the quantity
+    if (action === 'increase') {
+        list[itemIndex].quantity += 1;
+    } else if (action === 'decrease') {
+        list[itemIndex].quantity -= 1;
+        if (list[itemIndex].quantity <= 0) {
+            list.splice(itemIndex, 1);
+        }
+    }
+
+    writeList(list);
+    res.json({ message: 'List updated successfully' });
+});
+
+// API endpoint to fetch cart items
+app.get('/list-items', (req, res) => {
+    let list = readList();
+    res.json(list);
+});
+
 
 
 
@@ -140,26 +180,53 @@ app.post('/add-to-cart', (req, res) => {
 
 
 
+
 app.post('/add-to-list', (req, res) => {
     const newItem = req.body;
 
-    fs.readFile('list.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).json({ error: 'Error reading list file' });
-        }
+    let list = readList();
 
-        let list = JSON.parse(data);
+    // Check if item already exists
+    const existingItem = list.find(listItem =>
+        listItem.item === newItem.item &&
+        listItem.brand === newItem.brand &&
+        listItem.price === newItem.price
+    );
+
+    if (existingItem) {
+        existingItem.quantity += 1; // Only update the quantity
+    } else {
+        newItem.quantity = 1;
         list.push(newItem);
+    }
 
-        fs.writeFile('list.json', JSON.stringify(list, null, 2), (err) => {
-            if (err) {
-                return res.status(500).json({ error: 'Error writing to list file' });
-            }
-
-            res.json({ message: 'Item added to list successfully' });
-        });
-    });
+    writeList(list);
+    res.json({ message: 'Item added to list successfully' });
 });
+
+
+
+
+// app.post('/add-to-list', (req, res) => {
+//     const newItem = req.body;
+
+//     fs.readFile('list.json', 'utf8', (err, data) => {
+//         if (err) {
+//             return res.status(500).json({ error: 'Error reading list file' });
+//         }
+
+//         let list = JSON.parse(data);
+//         list.push(newItem);
+
+//         fs.writeFile('list.json', JSON.stringify(list, null, 2), (err) => {
+//             if (err) {
+//                 return res.status(500).json({ error: 'Error writing to list file' });
+//             }
+
+//             res.json({ message: 'Item added to list successfully' });
+//         });
+//     });
+// });
 
 
 

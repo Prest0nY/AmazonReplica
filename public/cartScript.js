@@ -64,12 +64,16 @@ function fetchCartItems () {
                     const lessCart = document.createElement('button');
                     lessCart.innerText = '-'
                     lessCart.addEventListener('click', () => updateCartItem(item.item, item.brand, item.price, 'decrease'));
+                    lessCart.style.fontFamily = 'Teko';
+                    lessCart.style.fontSize = '20px'
+
 
 
                     const moreCart = document.createElement('button');
                     moreCart.innerText = '+';
                     moreCart.addEventListener('click', () => updateCartItem(item.item, item.brand, item.price, 'increase'))
-                    
+                    moreCart.style.fontFamily = 'Teko';
+                    moreCart.style.fontSize = '20px'
 
 
                     quantityDiv.appendChild(lessCart);

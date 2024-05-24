@@ -2,11 +2,13 @@
   {
     "item": "Molten FIVB Volleyball",
     "brand": "Molten",
-    "price": 70
+    "price": 70,
+    "quantity": 1
   },
   {
-    "item": "Lego Technic Camaro",
+    "item": "Lego Technic Batmobile",
     "brand": "LEGO",
-    "price": 120
+    "price": 120,
+    "quantity": 1
   }
 ]
