@@ -27,6 +27,11 @@ function fetchCartItems () {
         .then(response => response.json())
         .then(data => {
             const cartItemsDiv = document.getElementById('cartItems');
+            cartItemsDiv.innerHTML = ''
+
+            let totalPrice = 0;
+
+
             if (data.length === 0) {
                 cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
             } else {
@@ -93,7 +98,17 @@ function fetchCartItems () {
                     itemDiv.appendChild(quantityDiv);
 
                     cartItemsDiv.appendChild(itemDiv);
+
+                    totalPrice += item.price * item.quantity;
                 });
+
+                const totalPriceDiv = document.createElement('div');
+                totalPriceDiv.innerText = `Price: $${totalPrice}`
+                totalPriceDiv.style.fontSize = '40px'
+                totalPriceDiv.className = 'priceBorder'
+                
+
+                cartItemsDiv.appendChild(totalPriceDiv);
             }
         })
     

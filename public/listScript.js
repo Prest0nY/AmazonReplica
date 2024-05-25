@@ -26,6 +26,8 @@ function fetchListItems() {
         .then(response => response.json())
         .then(data => {
             const listItemsDiv = document.getElementById('listItems');
+            listItemsDiv.innerHTML = '';
+
             if(data.length === 0) {
                 listItemsDiv.innerHTML = '<p>Your list is empty.</p>';
             } else {

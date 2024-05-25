@@ -1,3 +1,10 @@
 [
-  
+  {
+    "item": "Lego Technic Batmobile",
+    "brand": "LEGO",
+    "price": 120,
+    "imageUrl": "images/batmobilelego.jpg",
+    "imageWidth": "40%",
+    "quantity": 4
+  }
 ]
