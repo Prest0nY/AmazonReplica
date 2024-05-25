@@ -3,6 +3,7 @@
     "item": "Molten FIVB Volleyball",
     "brand": "Molten",
     "price": 70,
-    "quantity": 4
+    "imageUrl": "images/moltenvball.jpg",
+    "quantity": 1
   }
 ]

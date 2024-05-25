@@ -1,19 +1,22 @@
 const volleyball = {
     item: "Molten FIVB Volleyball",
     brand: "Molten",
-    price: 70
+    price: 70,
+    imageUrl: "images/moltenvball.jpg"
 }
 
 const legoCar = {
     item: "Lego Technic Batmobile",
     brand: "LEGO",
-    price: 120
+    price: 120,
+    imageUrl: "images/batmobilelego.jpg"
 }
 
 const gpu = {
     item: "NVIDIA RTX 4090",
     brand: "NVIDIA",
-    price: 1300
+    price: 1300,
+    imageUrl: "images/nvidia4090.jpg"
 }
 
 

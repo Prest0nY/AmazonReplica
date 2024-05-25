@@ -66,11 +66,17 @@ function fetchListItems() {
                     moreList.style.fontFamily = 'Teko';
                     moreList.style.fontSize = '20px'
 
+
+                    const itemImage = document.createElement('img');
+                    itemImage.src = item.imageUrl;
+                    itemImage.style.width = '10%'
+
                     
                     quantityDiv.appendChild(lessList);
                     quantityDiv.appendChild(moreList);
 
                     itemDiv.appendChild(itemName);
+                    itemDiv.appendChild(itemImage);
                     itemDiv.appendChild(itemBrand);
                     itemDiv.appendChild(itemPrice);
                     itemDiv.appendChild(itemQuantity);

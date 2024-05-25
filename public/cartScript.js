@@ -76,11 +76,17 @@ function fetchCartItems () {
                     moreCart.style.fontSize = '20px'
 
 
+                    const itemImage = document.createElement('img');
+                    itemImage.src = item.imageUrl;
+                    itemImage.style.width = '10%'
+
+
                     quantityDiv.appendChild(lessCart);
                     quantityDiv.appendChild(moreCart);
 
 
                     itemDiv.appendChild(itemName);
+                    itemDiv.appendChild(itemImage);
                     itemDiv.appendChild(itemBrand);
                     itemDiv.appendChild(itemPrice);
                     itemDiv.appendChild(itemQuantity);
