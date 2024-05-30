@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "item": "NVIDIA RTX 4090",
+    "brand": "NVIDIA",
+    "price": 1300,
+    "imageUrl": "images/nvidia4090.jpg",
+    "quantity": 4
+  }
+]

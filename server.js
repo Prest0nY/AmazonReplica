@@ -9,10 +9,10 @@ app.use(bodyParser.json());
 
 // Serve static files from the "public" directory
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'docs')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
 
@@ -122,7 +122,7 @@ app.get('/list-items', (req, res) => {
 
 
 app.get('/cart', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'cart.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'cart.html'));
 });
 
 // API endpoint to get cart items
@@ -140,7 +140,7 @@ app.get('/cart-items', (req, res) => {
 
 
 app.get('/list', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'list.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'list.html'));
 });
 
 app.get('/list-items', (req, res) => {
