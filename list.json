@@ -4,7 +4,13 @@
     "brand": "LEGO",
     "price": 120,
     "imageUrl": "images/batmobilelego.jpg",
-    "imageWidth": "40%",
-    "quantity": 4
+    "quantity": 1
+  },
+  {
+    "item": "NVIDIA RTX 4090",
+    "brand": "NVIDIA",
+    "price": 1300,
+    "imageUrl": "images/nvidia4090.jpg",
+    "quantity": 1
   }
 ]

@@ -19,6 +19,56 @@ const gpu = {
     imageUrl: "images/nvidia4090.jpg"
 }
 
+var volleyballButtonQuantity = 1
+
+
+function increaseVballQ () {
+    volleyballButtonQuantity += 1
+
+    document.getElementById("volleyballButtonQuantity").innerHTML = volleyballButtonQuantity
+}
+
+function decreaseVballQ () {
+    volleyballButtonQuantity -= 1
+
+    document.getElementById("volleyballButtonQuantity").innerHTML = volleyballButtonQuantity
+}
+
+
+
+var legoButtonQuantity = 1
+
+function increaseLEGOQ () {
+    legoButtonQuantity += 1
+
+    document.getElementById("legoButtonQuantity").innerHTML = legoButtonQuantity
+}
+
+function decreaseLEGOQ () {
+    legoButtonQuantity -= 1
+
+    document.getElementById("legoButtonQuantity").innerHTML = legoButtonQuantity
+}
+
+
+var gpuButtonQuantity = 1
+
+function increaseGPUQ () {
+    gpuButtonQuantity += 1
+
+    document.getElementById("gpuButtonQuantity").innerHTML = gpuButtonQuantity
+}
+
+function decreaseGPUQ () {
+    gpuButtonQuantity -= 1
+
+    document.getElementById("gpuButtonQuantity").innerHTML = gpuButtonQuantity
+}
+
+
+
+
+
 
 document.getElementById('addVolleyballCart').addEventListener('click', ()=>{
     addItemtoCart(volleyball)

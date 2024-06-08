@@ -1,9 +1,23 @@
 [
   {
+    "item": "Molten FIVB Volleyball",
+    "brand": "Molten",
+    "price": 70,
+    "imageUrl": "images/moltenvball.jpg",
+    "quantity": 3
+  },
+  {
+    "item": "Lego Technic Batmobile",
+    "brand": "LEGO",
+    "price": 120,
+    "imageUrl": "images/batmobilelego.jpg",
+    "quantity": 1
+  },
+  {
     "item": "NVIDIA RTX 4090",
     "brand": "NVIDIA",
     "price": 1300,
     "imageUrl": "images/nvidia4090.jpg",
-    "quantity": 4
+    "quantity": 1
   }
 ]
